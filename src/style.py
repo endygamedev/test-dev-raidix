@@ -1,3 +1,5 @@
+# Simple set of colors and styles for the terminal
+
 class Color:
     DEFAULT = "\033[0m"
     RED = "\033[91m"

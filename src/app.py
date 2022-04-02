@@ -11,7 +11,7 @@ import sys
 from _thread import *
 import syslog
 
-from style import Color, Style
+from src.style import Color, Style
 
 
 class Server:
@@ -179,7 +179,7 @@ class Server:
             @return: `side effect`: Handles new connections
             @rtype: None
         """
-        print(f"{Style.BOLD}{Color.HEADER}Server on {ipaddr}:{port} is ready!\nWaiting for users...\n{Color.DEFAULT}{Style.NORMAL}")
+        print(f"{Style.BOLD}{Color.HEADER}Server on {self.ipaddr}:{self.port} is ready!\nWaiting for users...\n{Color.DEFAULT}{Style.NORMAL}")
 
         while True:
             try:
@@ -287,7 +287,17 @@ class Client:
         self.server.close()
 
 
-if __name__ == "__main__":
+def main() -> None:
+    """
+        @Synopsis
+        def main() -> None
+
+        @Description
+        Main function. The input is the information needed to start the client of server.
+
+        @return: `side effect`: Creates a client of server
+        @rtype: None
+    """
     # Checks whether sufficient arguments have been provided
     if len(sys.argv) != 4:
         print(f"{Style.BOLD}{Color.RED}Correct usage: script, mode (s | c), IP address, port number{Color.DEFAULT}{Style.NORMAL}")
@@ -304,3 +314,7 @@ if __name__ == "__main__":
     else:
         print(f"{Style.BOLD}{Color.RED}Unknown operation mode. You need to use `s` for server mode and `c` for client mode.{Color.DEFAULT}{Style.NORMAL}")
         exit()
+
+
+if __name__ == "__main__":
+    main()
